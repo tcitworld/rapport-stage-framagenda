@@ -7,6 +7,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{caption}
 \author{Thomas Citharel}
 \title{Rapport de stage}
 \begin{document}
@@ -46,7 +47,7 @@
 	
 	Il est important de remarquer que les protocoles internet pour la gestion de calendrier souffrent de multiples défauts rendant la compatibilité entre serveurs de calendrier et clients plutôt bancale.
 	
-	Ainsi, c'est la société Apple qui est à la pointe des derniers standards dans son application iCal (désormais nommée plus simplement Calendar). N'ayant pas de machine Apple, je n'ai pu profiter de ce logiciel pour mes tests. De plus, le protocole CalDAV utilisé est pour le moins critiqué.
+	Ainsi, c'est la société Apple qui est à la pointe des derniers standards dans son application \textit{iCal} (désormais nommée plus simplement \textit{Calendar}). N'ayant pas de machine Apple, je n'ai pu profiter de ce logiciel pour mes tests. De plus, le protocole CalDAV utilisé est pour le moins critiqué.
 	
 	Quelques mois avant que mon stage débute, deux événements ont eu lieu. D'une part, ownCloud a sorti une version 9.0 qui a transféré le module DAV (serveur responsable du calendrier et des contacts) dans le \textit{core} et l'application Calendar a été refaite complètement quasiment intégralement en javascript à l'aide du framework AngularJS.
 	
@@ -54,13 +55,47 @@
 	
 	\subsection{Le deal}
 	Je devais effectuer les tâches suivantes :
-	\begin{enumerate}
-		\item Permettre de rendre un calendrier public et l'afficher publiquement sans être enregistré sur l'instance ownCloud.
-		\item Permettre d'afficher ce calendrier public à l'intérieur d'une \textit{iframe} lui permettant d'être intégré sur des sites tiers ou des blogs.
-		\item Permettre de souscrire à des calendriers, c'est à dire de visualiser des calendriers dans l'application qui proviennent d'une source publique sur internet.
-	\end{enumerate}
-	La première tâche est liée d'une part à l'implémentation du protocole de publication d'un calendrier tel que défini par Apple à travers un plugin spécialisé dans le cœur d'ownCloud.
+	
+	\subsubsection{Permettre de rendre un calendrier public et l'afficher publiquement sans être enregistré sur l'instance ownCloud.}
+	
+	La première tâche était la mission principale. Elle est liée premièrement à l'implémentation du protocole de publication d'un calendrier tel que défini par Apple à travers un plugin spécialisé dans le cœur d'ownCloud. D'autre part, il nous faut également une interface utilisateur dans l'application Calendrier qui permette de publier et dé-publier un calendrier. Enfin, il était nécessaire de proposer une vue « publique » accessible à tous sans être enregistré pour les calendriers publiés.
+	
+	\begin{figure}
+		\includegraphics[width=0.5\paperwidth]{images/fonctionnalitepublie.png}
+		\caption*{Un calendrier publié}
+		\label{normal_case}
+	\end{figure}
+
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=1\textwidth]{images/calendrier-vue-publique.png}
+		\caption*{Vue publique d'un calendrier}
+		\label{normal_case}
+	\end{figure}
+
+	
+	\subsubsection{ Permettre d'afficher ce calendrier public à l'intérieur d'une \textit{iframe} lui permettant d'être intégré sur des sites tiers ou des blogs.}La seconde tâche était assez simple et consistait surtout à configurer l'application correctement pour autoriser l'intégration à l'intérieur de sites tiers, et de rendre son apparence acceptable.
+	
+	\begin{figure}
+		\includegraphics[width=0.5\paperwidth]{images/integration_wordpress}
+		\caption*{Intégration d'un calendrier public dans une page Wordpress}
+		\label{normal_case}
+	\end{figure}
+	
+	\subsubsection{Permettre de s'abonner à des calendriers, c'est à dire de visualiser des calendriers dans l'application qui proviennent d'une source publique sur internet.}
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.30\textwidth]{images/creation_abonnement.png}
+		\caption*{Formulaire pour ajouter un calendrier public}
+		\label{normal_case}
+	\end{figure}
+	
+	La troisième tâche consistait à pourvoir une fonctionnalité d'abonnement à des calendriers dans l'application Calendrier d'ownCloud. En effet, l'implémentation des abonnements selon le standard CalDAV était déjà réalisée dans le cœur d'ownCloud, il suffisait de réaliser les bons appels et de gérer les fichiers distants.
 	
 	\chapter{History}
-	La première semaine a été dédiée à l'étude du fonctionnement du cœur d'ownCloud et l'intégration avec SabreDAV. J'ai dû également rechercher beaucoup d'informations sur les standards de CalDAV (ainsi que ce qui n'est pas standardisé !) car la synchronisation devait fonctionner à partir des clients existants.
+	La première semaine de mon stage a été dédiée à l'étude du fonctionnement du cœur d'ownCloud et l'intégration avec SabreDAV. J'ai dû également rechercher beaucoup d'informations sur les standards de CalDAV (ainsi que ce qui n'est pas standardisé !) car la synchronisation devait fonctionner à partir des clients existants.
+	
+	D'autre part, j'ai également dû lire beaucoup du code de l'application Calendrier, car elle est développée à l'aide du Framework AngularJS qui n'est pas une technologie que je maîtrisais.
 \end{document}
