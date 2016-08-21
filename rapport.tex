@@ -32,12 +32,10 @@
 	\setcounter{tocdepth}{1}
 	\begingroup\makeatletter
 	\def\@makeschapterhead#1{%
-		\vspace*{0pt}% <---- à réduire pour avoir plus de place
 		{\parindent \z@ \raggedright
 			\normalfont
 			\interlinepenalty\@M
 			\Huge \bfseries  #1\par\nobreak
-			\vskip 0pt% <---- à réduire pour avoir plus de place
 		}}\makeatother
 		\tableofcontents
 		\endgroup
@@ -92,16 +90,25 @@
 	À compter de l'année 2011, Framasoft commence à sortir des services web comme Framapad (un éditeur collaboratif), Framadate (un outil pour planifier des événements via sondage) ou encore Framacalc (un tableur en ligne).
 	\\
 	
-	Aujourd'hui, Framasoft compte une trentaine de membres dont cinq salariés et est une des associations francophones les plus en pointe sur le sujet des logiciels libres et du respect de la vie privée.
+	À l'automne 2014 est annoncée la campagne \textbf{Dégooglisons Internet} qui a pour but de montrer au public qu'ils ne sont pas condamnés à utiliser des services qui ne respectent pas leur vie privée (plus de détails-ci dessous \ref{subsec:degoogl}).
+	\\
+	
+	Aujourd'hui, Framasoft compte une trentaine de membres dont cinq salariés et deux stagiaires, et est une des associations francophones les plus en pointe sur le sujet des logiciels libres et du respect de la vie privée.
+	\\
+	
+	Côté services, on compte aujourd'hui plus d'un demi-million de visites sur tous les sites du réseau chaque mois, un nouveau sondage créé environ chaque minute sur Framadate et 100 000 pads actuellement actifs sur Framapads. Il y a aujourd'hui une vingtaine de livres édités par Framasoft. Enfin, grâce à l'éclatement géographique de ses membres, Framasoft peut être présent sur une énorme partie des événements liés au logiciel libre dans le monde francophone.
+	\\
 	
 	L'association possède un budget de l'ordre de 200 000\euro{} financés à 90\% par les dons, dont la grande majeure partie vient de particuliers. Le reste est issu de la vente de produits dérivés et de rares prestations techniques.
 	\\
 	
 	Il est important de noter que Framasoft n'ambitionne pas de devenir le prochain géant du web. L'association reste à but non lucratif et a de plus une volonté de décentraliser ses activités au sein de structures locales qui seraient des « hébergeurs de services de proximité ».
+	\\
 		
 	L'association ayant comme but de sensibiliser le grand public aux valeurs du logiciel libre, elle est très souvent invitée à s'exprimer lors de manifestations en rapport avec le sujet, comme celle à laquelle j'ai pu participer à Nevers le week-end du 24 au 26 Juin.
 	
 	\subsection{Dégooglisons Internet}
+	\label{subsec:degoogl}
 	
 	En octobre 2014, la campagne \href{https://degooglisons-internet.org/}{\textbf{\textit{Dégooglisons} Internet}} est lancée par Framasoft afin de montrer au public que des solutions à base de logiciel libre sont possibles face aux services proposés par les \textit{géants du net} (aussi nommés \textbf{GAFAM} pour \textbf{G}oogle, \textbf{A}mazon, \textbf{F}acebook, \textbf{A}pple et \textbf{M}icrosoft, mais il y en existe une multitude d'autres).
 	
@@ -113,11 +120,6 @@
 	
 	Framasoft utilise donc des applications web libres existantes ou développe ses propres alternatives pour proposer à des personnes non-techniques des services viables.
 	Ainsi, l'association a fait développer des solutions spécialement pour proposer Framapic (hébergement d'images : alternative à Imgur, Flickr), Framalink (raccourcisseur d'url : alternative à bit.ly) et Framadrop (service de transfert de fichiers : alternative à WeTransfer). De plus, elle a lancé en juin 2014 une campagne de financement participatif spécialement pour faire ajouter de nouvelles fonctionnalités au service Framapad, sous la forme d'un plugin.
-	
-	\subsection{Quelques chiffres}
-	Framasoft compte aujourd'hui cinq salariés ainsi que deux stagiaires, ainsi qu'une vingtaine de membres actifs. 
-	
-	Côté services, on compte aujourd'hui plus d'un demi-million de visites sur tous les sites du réseau chaque mois, un nouveau sondage créé environ chaque minute sur Framadate et 100 000 pads actuellement actifs sur Framapads. Il y a aujourd'hui une vingtaine de livres édités par Framasoft, et leurs ventes totales avoisine les xx. Enfin, grâce à l'éclatement géographique de ses membres, Framasoft est présent sur la quasi-totalité des événements liés au logiciel libre en francophonie.
 	
 	\section{Site de Locaux Motiv'}
 	Locaux Motiv' est un tiers-lieu associatif ouvert en septembre 2011 dans le quartier de la Guillotière à Lyon. Cet espace de co-working est géré en autogestion par une association fondée en 2010 autour d'autres associations du quartier. Locaux Motiv' compte aujourd’hui une vingtaine de structures - associations et entreprises - résidentes et usagères du lieu.
@@ -159,6 +161,8 @@
 	
 	\section{Objectifs du stage}
 	
+	La tâche principale était de sortir un service comme un produit fini, c'est à dire qu'il fallait mettre ajouter les fonctionnalités suivantes, mais également corriger quelques bugs bloquants de manière à ce que le code soit prêt pour l'ouverture du service.
+	
 	\subsubsection{Permettre de rendre un calendrier public et l'afficher publiquement}
 	
 	\begin{wrapfigure}{r}{0.4\textwidth}
@@ -168,7 +172,7 @@
 		\caption{Publication d'un calendrier}
 	\end{wrapfigure}
 	
-	La première tâche était la mission principale. Elle est liée premièrement à l'implémentation du protocole de publication d'un calendrier à travers un plugin spécialisé dans le cœur d'ownCloud. D'autre part, il nous faut également une interface utilisateur dans l'application Calendrier qui permette de publier et dé-publier un calendrier. Enfin, il était nécessaire de proposer une vue « publique » accessible à tous sans être enregistré pour les calendriers publiés.
+	La première tâche est liée premièrement à l'implémentation du protocole de publication d'un calendrier à travers un plugin spécialisé dans le cœur d'ownCloud. D'autre part, il nous faut également une interface utilisateur dans l'application Calendrier qui permette de publier et dé-publier un calendrier. Enfin, il était nécessaire de proposer une vue « publique » accessible à tous sans être enregistré pour les calendriers publiés.
 
 	
 	\subsubsection{Permettre d'afficher ce calendrier public sur des pages web externes}La seconde tâche était relativement plus aisée et consistait surtout à configurer l'application correctement pour autoriser l'intégration à l'intérieur de sites tiers, et de rendre son apparence acceptable.
@@ -188,6 +192,7 @@
 	
 	\subsubsection{Permettre de s'abonner à des calendriers}
 	
+	\textbf{\color{red}NOTE : CHANGER LA CAPTURE D'ÉCRAN}
 	\begin{wrapfigure}{r}{0.4\textwidth}
 		\begin{center}
 			\includegraphics[width=0.40\textwidth]{images/creation_abonnement.png}
@@ -210,6 +215,9 @@
 	\end{figure}
 	
 	\section{Historic}
+	\textbf{\color{red}FAIRE QUELQUE CHOSE AVEC CETTE PARTIE}
+	
+	
 	La première semaine de mon stage a été dédiée à l'étude du fonctionnement du cœur d'ownCloud et de son intégration avec la librairie SabreDAV. J'ai dû également rechercher beaucoup d'informations sur les standards de CalDAV (ainsi que ce qui n'est pas standardisé !) car la synchronisation devait fonctionner à partir des clients existants.
 	
 	D'autre part, j'ai également dû lire beaucoup du code de l'application Calendrier, car elle est développée à l'aide du Framework AngularJS qui n'est pas exactement une technologie que je maîtrisais.
@@ -309,6 +317,9 @@
 	Chaque nouvelle méthode de mon code devait par conséquent s'accompagner d'un test qui devait être préalablement vérifié en local. Si une partie du code que j'avait apportée n'était pas testée, alors le \textit{code coverage}, la proportion de code couvert par les tests par rapport au code complet baissait et cela m'était automatiquement signalé. Les tests unitaires étaient réalisés à l'aide du \textit{framework} de test \textit{PHPUnit} pour le code PHP et de la librairie \textit{Karma} pour le JavaScript de l'application Calendrier.
 	
 	\subsection{Les trucs annexes}
+	
+	\textbf{\color{red}TODO : PASSER SUR TOUS LES BUGS CORRIGÉS PAR MOI VOIR SI Y A RIEN À MENTIONNER}
+	
 	Mon stage consistait avant tout à implémenter de nouvelles fonctionnalités dans l'application Calendrier existante, mais il fallait également que celle-ci soit prête à être utilisée dans Framagenda sans \textit{bugs} flagrants. Ainsi, j'ai corrigé quelques problèmes tiers dans le \textit{core} ou l'application Calendrier.
 	On peut citer par exemple les propriétés CalDAV d'un abonnement à un calendrier qui n'étaient pas proprement sauvegardées lors d'une requête de mise à jour ou encore les événements d'un calendrier qui s'effaçaient si jamais l'éditeur était ouvert puis l'action d'édition annulée. 
 	
@@ -319,7 +330,14 @@
 	J'ai aussi ajouté les vérifications faites par cet outil au système d'intégration continue de sorte que si quelqu'un propose une \textit{pull request} qui ne satisfasse pas les règles, elle soit marquée comme erronée.
 	
 	\mychapter{5}{Bilan du stage}
-	\mychapter{6}{Lexique}
+	\textbf{\color{red}TODO}
+	\section{Bilan technique}
+	\section{Bilan humain}
+	C'était cool.
+	\mychapter{6}{Glossaire}
+	\begin{itemize}
+		\item \textbf{pad} : Éditeur de texte collaboratif en ligne (comme un iPad mais ne fait pas mal). BEST JOKE EVER OMG.
+	\end{itemize}
 	\mychapter{7}{Abréviations}
 	\mychapter{8}{Webographie}
 	\mychapter{9}{Annexes}
