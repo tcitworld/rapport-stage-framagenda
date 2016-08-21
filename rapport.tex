@@ -29,7 +29,18 @@
 	\newpage\null\thispagestyle{empty}\newpage
 	\mychapter{0}{Remerciements}
 	Merci maman merci papa
-	\tableofcontents
+	\setcounter{tocdepth}{1}
+	\begingroup\makeatletter
+	\def\@makeschapterhead#1{%
+		\vspace*{0pt}% <---- à réduire pour avoir plus de place
+		{\parindent \z@ \raggedright
+			\normalfont
+			\interlinepenalty\@M
+			\Huge \bfseries  #1\par\nobreak
+			\vskip 0pt% <---- à réduire pour avoir plus de place
+		}}\makeatother
+		\tableofcontents
+		\endgroup
 	
 	\mychapter{1}{Introduction}
 	Dans le cadre des études que j'effectue à l'\textbf{IUT d'Orléans} dans le but d'obtenir un Diplôme Universitaire de Technologie, je devais effectuer un stage d'une durée de 10 semaines afin de valider ce diplôme. Ce stage a pour but d'acquérir une première expérience professionnelle en validant les connaissances apprises durant l'année et en exerçant des compétences au travers de la réalisation d'un projet.
