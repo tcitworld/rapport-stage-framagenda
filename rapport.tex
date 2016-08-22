@@ -11,6 +11,7 @@
 \usepackage{eurosym}
 \usepackage{wrapfig}
 \usepackage{rotating}
+\usepackage{float}
 \usepackage{array, multirow}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
@@ -29,6 +30,7 @@
 	\newpage\null\thispagestyle{empty}\newpage
 	\mychapter{-3}{Remerciements}
 	Merci maman merci papa
+	\newpage\null\thispagestyle{empty}\newpage
 	\setcounter{tocdepth}{1}
 	\begingroup\makeatletter
 	\def\@makeschapterhead#1{%
@@ -64,6 +66,7 @@
 		\item \textbf{empreinte} : Identifiant unique, résultat d'une fonction de hachage.
 		\item \textbf{fédération} : Le concept de fédération consiste en la communication de plusieurs instances de l'application. Ainsi, il est possible de partager des fichiers avec des utilisateurs inscrits sur d'autres serveurs en connaissant leur identifiant de la forme \textit{utilisateur@domaineowncloud.tld}.
 		\item \textbf{fonction de hachage} : Fonction mathématique qui produit un identifiant unique pour une information.
+		\item \textbf{framework} : Ensemble de composants permettant de mettre de place des applications ou des sites web plus facilement.
 		\item \textbf{pad} : Éditeur de texte collaboratif en ligne.
 		\item \textbf{pull request} : Requête aux mainteneurs de l'application pour que les changements dans le code soient acceptés.
 		\item \textbf{sel} : Chaîne de texte aléatoire servant à ajouter de l'entropie aux fonctions de hachage.
@@ -78,8 +81,8 @@
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.35\textwidth]{images/logo-iut.png}
-		\caption*{Logo de l'IUT et de l'Université d'Orléans}
-		\label{normal_case}
+		\caption{Logo de l'IUT et de l'Université d'Orléans}
+		\label{logo-iut}
 	\end{figure}
 	
 	La formation conduisant à un Diplôme Universitaire de Technologie est d'ordinaire effectuée sur la période de deux années mais l'IUT offre également aux étudiants ayant déjà un parcours dans l'enseignement supérieur la possibilité d'effectuer cette formation en une année.
@@ -94,8 +97,8 @@
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.25\textwidth]{images/Framasoft-Logo.png}
-		\caption*{Logo actuel de Framasoft}
-		\label{normal_case}
+		\caption{Logo actuel de Framasoft}
+		\label{logo-framasoft}
 	\end{figure}
 	
 	Le site Framasoft se développe en réseau avec l'intégration de tutoriels et du forum Framagora. Une association Loi 1901 éponyme est fondée en 2004 pour gérer le réseau et acquerra le statut d'association à but non lucratif quatre ans plus tard. L'annuaire se restreint aux uniquement aux logiciels libres en se séparant des logiciels dits \textit{gratuiciels} la même année, et s'ouvre à d'autres systèmes d'exploitation que Windows.
@@ -135,8 +138,11 @@
 	
 	En octobre 2014, la campagne \href{https://degooglisons-internet.org/}{\textbf{\textit{Dégooglisons} Internet}} est lancée par Framasoft afin de montrer au public que des solutions à base de logiciels libres sont possibles face aux services proposés par les \textit{géants du net} (aussi nommés \textbf{GAFAM} pour \textbf{G}oogle, \textbf{A}mazon, \textbf{F}acebook, \textbf{A}pple et \textbf{M}icrosoft, mais il y en existe une multitude d'autres).
 	
-
-	\centerline{\includegraphics[width=1\textwidth]{images/degooglisons-internet.jpg}}
+	\begin{figure}[ht]
+		\centerline{\includegraphics[width=1\textwidth]{images/degooglisons-internet.jpg}}
+		\caption{Visuel de la campagne Dégooglisons}
+		\label{visuel-campagne}
+	\end{figure}
 
 	
 	En plus de ceux proposés avant le début de la campagne (Framapad, Framadate, ...), Framasoft a ouvert une vingtaine de services en ligne et un nombre aussi important doit s'ajouter d'ici la fin de la campagne en 2018 (cf. Annexe \ref{sec:listeservices}).
@@ -157,7 +163,7 @@
 	\begin{figure}[ht]
 		\centering
 		\centerline{\includegraphics[width=1.5\textwidth]{images/google-agenda-interface-actuelle.png}}
-		\caption*{Interface actuelle de Google Agenda}
+		\caption{Interface actuelle de Google Agenda}
 		\label{normal_case}
 	\end{figure}
 	
@@ -193,8 +199,8 @@
 	\begin{figure}[ht]
 		\centering
 		\centerline{\includegraphics[width=1.5\textwidth]{images/calendrier-vue-publique.png}}
-		\caption*{Vue publique d'un calendrier}
-		\label{normal_case}
+		\caption{Vue publique d'un calendrier}
+		\label{vue-publique-calendrier}
 	\end{figure}
 	
 	\subsubsection{Permettre de rendre un calendrier public et l'afficher publiquement}
@@ -204,6 +210,7 @@
 		\includegraphics[width=0.3\paperwidth]{images/fonctionnalitepublie.png}
 	\end{center}
 		\caption{Publication d'un calendrier}
+		\label{publication-calendrier}
 	\end{wrapfigure}
 	
 	La première tâche est liée premièrement à l'implémentation du protocole de publication d'un calendrier à travers un plugin spécialisé dans le cœur d'ownCloud. D'autre part, il faut également une interface utilisateur dans l'application Calendrier qui permette de publier et dé-publier un calendrier. Enfin, il était nécessaire de proposer une vue « publique » accessible à tous sans être enregistré pour accéder au calendrier publié.
@@ -216,7 +223,8 @@
 		\begin{center}
 			\includegraphics[width=0.40\textwidth]{images/creation_abonnement.png}
 		\end{center}
-		\caption*{Formulaire pour s'abonner à un calendrier public}
+		\caption{Formulaire pour s'abonner à un calendrier public}
+		\label{abonnement-calendrier}
 	\end{wrapfigure}
 	
 	La seconde tâche consistait à pourvoir une fonctionnalité d'abonnement à des calendriers issus d'une source publique sur internet dans l'application Calendrier d'ownCloud. En effet, l'implémentation des abonnements selon le standard CalDAV (cf Annexe \ref{sec:standards}) était déjà réalisée dans le cœur d'ownCloud, il \textit{suffisait} de réaliser les bons appels aux API et de gérer les fichiers distants du côté de l'application Calendrier.	
@@ -224,12 +232,14 @@
 	\chapter{Analyse de l'existant}
 	
 	Le fonctionnement des calendriers dans ownCloud est le suivant. Le serveur s'appuie sur la librairie SabreDAV en l'adaptant pour son utilisation particulière dans un module propre. Ce module prend en charge les requêtes suivant les standards de synchronisation de calendriers et sert les données aux clients.
-	L'application Calendrier fonctionne exactement comme un client de synchronisation de calendriers standard.
+	\\
+	
+	L'application Calendrier fonctionne exactement comme un client de synchronisation de calendriers standard. Elle se base sur la librairie JavaScript FullCalendar et utilise le \textit{framework} AngularJS.
 	
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.75\textwidth]{images/schema.png}
-		\caption*{Fonctionnement des calendriers dans ownCloud}
+		\caption{Fonctionnement des calendriers dans ownCloud}
 		\label{normal_case}
 	\end{figure}
 	
@@ -253,7 +263,7 @@
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.5\textwidth]{images/owncloud-logo.png}
-		\caption*{Logo ownCloud}
+		\caption{Logo de l'application ownCloud}
 		\label{normal_case}
 	\end{figure}
 	
@@ -267,10 +277,10 @@
 	
 	\chapter{Développement}
 	\section{Organisation du travail}
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\centerline{\includegraphics[width=1.45\textwidth]{images/deroulement.png}}
-		\caption*{Déroulement du stage}
+		\caption{Schéma du déroulement du stage}
 		\label{normal_case}
 	\end{figure}
 	
@@ -369,12 +379,40 @@
 	Cet outil signale lorsque le code écrit ne suit pas les règles définies, par exemple l'espacement entre les blocs \textsc{css} ou l'écriture de règles désuètes.
 	
 	J'ai aussi ajouté les vérifications faites par cet outil au système d'intégration continue de sorte que si quelqu'un propose une \textit{pull request} qui ne satisfasse pas les règles, elle soit marquée comme erronée.
+
+	\section{Proposition d'améliorations}
+	J'ai pu remarquer certains manques par rapport à Google Agenda, comme une vue « planning » qui affiche les événement sous forme de liste. Cette vue pourrait être ajoutée en rendant l'application Calendrier compatible avec la version 3 de la librairie FullCalendar (Figure \ref{planning-fullcalendar}).
+	
+	\begin{figure}[ht]
+		\centering
+		\centerline{\includegraphics[width=1.25\textwidth]{images/fullcalendar-3.png}}
+		\caption{Vue « planning » dans FullCalendar 3}
+		\label{planning-fullcalendar}
+	\end{figure}
+	
+	Une autre amélioration qui pourrait être développée sans trop d'effort serait le rafraîchissement automatique du calendrier. Cette fonctionnalité serait fort utile dans le cas où un écran affiche les événements d'une organisation toute la journée.
+	
+	Enfin, il serait intéressant (mais également plus complexe) d'intégrer correctement les événements issus du calendrier avec le système de notifications d'ownCloud, par exemple lors qu'un utilisateur à accès à un nouveau partage, ou bien qu'il est invité à un événement.
 	
 	\mychapter{5}{Bilan du stage}
-	\textbf{\color{red}TODO}
+	L'objectif de ce stage était de réaliser et mettre en place une application de gestion d'agendas. Cette application devait être intuitive et accessible à tout le monde, tout en ayant des fonctionnalités à peu près équivalentes avec Google Agenda.
 	\section{Bilan technique}
+	Pour ce qui est du niveau technique, je note avoir réussi à comprendre progressivement le fonctionnement des parties qui m'intéressaient de l'application ownCloud en un temps minimal malgré la complexité du logiciel. J'ai ensuite pu tirer avantage de mon expérience avec PHP par les projets scolaires et extrascolaires pour effectuer les modifications nécessaires sans trop de problèmes.
+	\\
+	
+	En revanche, j'ai eu plus de mal à comprendre les paradigmes utilisés dans la librairie SabreDAV et les standards de gestion de calendrier, d'une part à cause de la documentation plutôt moyenne ce qui m'a amené à faire beaucoup de tests par moi-même pour comprendre leur fonctionnement.
+	\\
+	
+	La partie de l'application en AngularJS m'a posé davantage de soucis. C'était en effet une technologie à laquelle je n'avais jamais touché et qui nécessite une certaine abstraction. Heureusement, il existe beaucoup de ressources sur AngularJS et sa courbe d'apprentissage permet de pouvoir toucher au code rapidement.
 	\section{Bilan humain}
-	C'était cool.
+	La particularité de mon stage était que je n'avais pas de contact physique avec d'autres développeurs d'ownCloud. Cela n'a pas été un problème car les communications sur les tickets Github et la messagerie instantanée à travers IRC m'ont permis de poser les questions nécessaires. Les échanges se sont faits intégralement en anglais.
+	\\
+	
+	Les développeurs avec qui j'ai été en contact ont été sympathiques et compréhensifs, en prenant parfois le temps de m'expliquer mes erreurs, ce qui m'a agréablement surpris.
+	\\
+	
+	Concernant l'association Framasoft, j'ai pu apprécier leur bonne volonté lorsque j'ai lancé un appel à tester l'application en l'état.
+	
 	\mychapter{8}{Webographie}
 	\mychapter{9}{Annexes}
 	\label{ch:Annexes}
