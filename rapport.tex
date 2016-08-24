@@ -12,6 +12,15 @@
 \usepackage{wrapfig}
 \usepackage{rotating}
 \usepackage{float}
+\usepackage{fancyhdr, emptypage}
+\usepackage[pass]{geometry}       %% showframe just for demo
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\footrulewidth}{1pt}
+\renewcommand{\headrulewidth}{0pt}
 \usepackage{array, multirow}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
@@ -23,13 +32,69 @@
 	\addcontentsline{toc}{chapter}{#2}
 }
 
-\author{Thomas Citharel}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\author{Thomas Citharel\\
+	IUT d'Orléans - La Source
+	Orléans
+	France}
+\date{31 août 2016}
 \title{Rapport de stage}
 \begin{document}
-	\maketitle
+	\newgeometry{hmarginratio=1:1}    %% make layout symmetric
+	\begin{titlepage}
+		\center
+		
+		\textsc{\LARGE IUT d'Orléans}\\[1.5cm]
+		{\scshape\Large Rapport de stage\par}
+		\HRule \\[0.4cm]
+		{ \huge \bfseries Développement et mise en place d'une application de gestion d'agendas}\\[0.4cm]
+		\HRule \\[1.5cm]
+		
+		
+		{\scshape\Large Thomas Citharel\par}
+		{\large \today\par}
+		
+		\vspace{4cm}
+		
+		\begin{minipage}{0.45\textwidth}
+		\begin{flushleft} \large
+		\emph{Maître de stage :}\\
+		Pierre-Yves \textsc{Gosset}\\
+		\includegraphics[width=0.75\textwidth]{images/Framasoft-Logo.png}\par\vspace{1cm}
+		\end{flushleft}
+		\end{minipage}
+		\begin{minipage}{0.45\textwidth}
+		\begin{flushright} \large
+		\emph{Tuteur de stage :}\\
+		Julien \textsc{Arsouze}
+		\includegraphics[width=0.75\textwidth]{images/logo-iut.png}\par\vspace{1cm}
+		\end{flushright}
+		\end{minipage}\\[1.5cm]
+		% Bottom of the page
+		\vfill
+	\end{titlepage}
+	
+	\restoregeometry              %% restore the layout
 	\newpage\null\thispagestyle{empty}\newpage
 	\mychapter{-3}{Remerciements}
-	Merci maman merci papa
+	Je remercie tout d'abord l'association Framasoft de m'avoir accepté en tant que stagiaire durant ces 10 semaines.
+	\\
+	
+	Ensuite, je tiens à remercier en particulier mon maître de stage Monsieur Pierre-Yves \textsc{Gosset} pour son aide et sa disponibilité.
+	\\
+	
+	Je remercie aussi l'ensemble des membres de l'association pour leur aide, leurs retour sur mon travail et leur sympathie, bien que je n'aie pas pu rencontrer tout le monde physiquement.
+	\\
+	
+	J'ai une pensée particulière pour les différentes personnes rencontrées sur le lieu de travail lors de ce stage, le tiers-lieu Locaux Motiv'.
+	\\
+	
+	Les développeurs d'ownCloud avec lesquels j'ai principalement été en contacts sont également à mentionner : il s'agit de Georg \textsc{Ehrke} et de Thomas \textsc{Müller}.
+	\\
+	
+	Enfin, je remercie également l'ensemble de l'équipe pédagogique de l'IUT d'Orléans pour les connaissances acquises grâce à cette année d'études.
+	
 	\newpage\null\thispagestyle{empty}\newpage
 	\setcounter{tocdepth}{1}
 	\begingroup\makeatletter
@@ -41,6 +106,8 @@
 		}}\makeatother
 		\tableofcontents
 		\endgroup
+	
+	\newpage\null\thispagestyle{empty}\newpage
 	
 	\mychapter{-2}{Introduction}
 	Dans le cadre des études préparées à l'\textbf{IUT Informatique d'Orléans-La Source}, je devais effectuer un stage d'une durée de 10 semaines afin de valider le Diplôme Universitaire de Technologie. Ce stage a pour but d'acquérir une première expérience professionnelle en validant les connaissances apprises durant l'année et en exerçant des compétences au travers de la réalisation d'un projet professionnel.
@@ -55,12 +122,14 @@
 	\begin{itemize}
 		\item \textbf{\textsc{agpl}} : Affero General Public Licence, licence libre crée par la FSF pour les applications web utilisables comme des services.
 		\item \textbf{\textsc{css}} : Cascading Style Sheets, feuilles de styles en cascade. Ensemble de règles qui régissent l'apparence d'éléments dans une page \textsc{html}.
+		\item \textbf{\textsc{dav}} : \textit{Distributed Authoring and Versioning}. Technologie employée pour WebDAV, CalDAV et CardDAV. Plus d'explications dans le glossaire et en annexes.
 		\item \textbf{\textsc{fsf}} : Free Software Foundation, une fondation promouvant l'utilisation du logiciel libre.
 		\item \textbf{\textsc{html}} : HyperText Markup Language, un format de structuration de données employé pour représenter les pages web.
 	\end{itemize}
 	
 	\mychapter{0}{Glossaire}
 	\begin{itemize}
+		\item \textbf{CalDAV} : Protocole de gestion de calendriers en ligne basé sur WebDAV.
 		\item \textbf{Creative Commons} : Multiples licences libres surtout employées pour les œuvres de l'esprit (textes, images, vidéos, ...)
 		\item \textbf{iCal} : Format de fichier employé pour enregistrer les données d'un calendrier inventé en 1998.
 		\item \textbf{empreinte} : Identifiant unique, résultat d'une fonction de hachage.
@@ -72,8 +141,10 @@
 		\item \textbf{sel} : Chaîne de texte aléatoire servant à ajouter de l'entropie aux fonctions de hachage.
 		\item \textbf{sérialisation} : Conversion des données en mémoire sous la forme d'objets dans un format texte structuré, dans notre cas dans le métalangage de balisage \textsc{xml}.
 		\item \textbf{template} : Ici, modèle de présentation des données.
+		\item \textbf{WebDAV} : Protocole de gestion de fichiers avec des serveurs distants. Plus d'explications en annexe \ref{sec:standards}.
 	\end{itemize}
-	
+	\thispagestyle{empty}
+	\newpage\null\thispagestyle{empty}\newpage
 	\chapter{Les acteurs du stage}
 	\section{IUT}
 	L'\textbf{Institut Universitaire de Technologie d'Orléans - La Source} fait partie intégrante de l'Université d'Orléans - Tours. Il est composé de différents départements dont celui d'Informatique. Les domaines enseignés sont théoriques comme pratiques, et des enseignements complémentaires dont une langue vivante et des cours de Gestion et de communication professionnelle y sont également donnés.
@@ -154,6 +225,7 @@
 	Locaux Motiv' est un tiers-lieu associatif ouvert en septembre 2011 dans le quartier de la Guillotière à Lyon. Cet espace de co-working est géré en autogestion par une association fondée en 2010 autour d'autres associations du quartier.
 	Locaux Motiv' compte aujourd’hui une vingtaine de structures - associations et entreprises - résidentes et usagères du lieu. Framasoft a rejoint Locaux Motiv' en xxx.
 	
+	\newpage\null\thispagestyle{empty}\newpage
 	\chapter{Sujet du stage}
 	
 	\section{Présentation du sujet}
@@ -196,7 +268,7 @@
 	
 	La tâche principale était de sortir un service comme un produit fini, c'est à dire qu'il fallait mettre ajouter les fonctionnalités suivantes, mais également corriger quelques bugs bloquants de manière à ce que le code soit prêt pour l'ouverture du service.
 	
-	\begin{figure}[ht]
+	\begin{figure}[h]
 		\centering
 		\centerline{\includegraphics[width=1.5\textwidth]{images/calendrier-vue-publique.png}}
 		\caption{Vue publique d'un calendrier}
@@ -213,11 +285,14 @@
 		\label{publication-calendrier}
 	\end{wrapfigure}
 	
-	La première tâche est liée premièrement à l'implémentation du protocole de publication d'un calendrier à travers un plugin spécialisé dans le cœur d'ownCloud. D'autre part, il faut également une interface utilisateur dans l'application Calendrier qui permette de publier et dé-publier un calendrier. Enfin, il était nécessaire de proposer une vue « publique » accessible à tous sans être enregistré pour accéder au calendrier publié.
+	La première tâche est liée premièrement à l'implémentation du protocole de publication d'un calendrier à travers un plugin spécialisé dans le cœur d'ownCloud. 
+	
+	D'autre part, il faut également une interface utilisateur dans l'application Calendrier qui permette de publier et dé-publier un calendrier (Figure \ref{publication-calendrier}). 
+	
+	Enfin, il était nécessaire de proposer une vue « publique » accessible à tous sans être enregistré pour accéder au calendrier publié (Figure \ref{vue-publique-calendrier}).
+	\\
 	
 	\subsubsection{Permettre de s'abonner à des calendriers}
-	
-	\textbf{\color{red}NOTE : CHANGER LA CAPTURE D'ÉCRAN QUI N'EST PAS À JOUR}
 	
 	\begin{wrapfigure}{r}{0.4\textwidth}
 		\begin{center}
@@ -227,28 +302,13 @@
 		\label{abonnement-calendrier}
 	\end{wrapfigure}
 	
-	La seconde tâche consistait à pourvoir une fonctionnalité d'abonnement à des calendriers issus d'une source publique sur internet dans l'application Calendrier d'ownCloud. En effet, l'implémentation des abonnements selon le standard CalDAV (cf Annexe \ref{sec:standards}) était déjà réalisée dans le cœur d'ownCloud, il \textit{suffisait} de réaliser les bons appels aux API et de gérer les fichiers distants du côté de l'application Calendrier.	
+	La seconde tâche consistait à pourvoir une fonctionnalité d'abonnement à des calendriers issus d'une source publique sur internet dans l'application Calendrier d'ownCloud. 
+	
+	En effet, l'implémentation des abonnements selon le standard CalDAV (cf Annexe \ref{sec:standards}) était déjà réalisée dans le cœur d'ownCloud, il \textit{suffisait} de réaliser les bons appels aux API et de gérer les fichiers distants du côté de l'application Calendrier.
+	
+	Une interface de saisie a également été	ajoutée pour entrer son abonnement (Figure \ref{abonnement-calendrier}).
 	
 	\chapter{Analyse de l'existant}
-	
-	Le fonctionnement des calendriers dans ownCloud est le suivant. Le serveur s'appuie sur la librairie SabreDAV en l'adaptant pour son utilisation particulière dans un module propre. Ce module prend en charge les requêtes suivant les standards de synchronisation de calendriers et sert les données aux clients.
-	\\
-	
-	L'application Calendrier fonctionne exactement comme un client de synchronisation de calendriers standard. Elle se base sur la librairie JavaScript FullCalendar et utilise le \textit{framework} AngularJS.
-	
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[width=0.75\textwidth]{images/schema.png}
-		\caption{Fonctionnement des calendriers dans ownCloud}
-		\label{normal_case}
-	\end{figure}
-	
-	\section{Historic}
-	\textbf{\color{red}FAIRE QUELQUE CHOSE AVEC CETTE PARTIE}
-	
-	La première semaine de mon stage a été dédiée à l'étude du fonctionnement du cœur d'ownCloud et de son intégration avec la librairie SabreDAV. J'ai dû également rechercher beaucoup d'informations sur les standards (ainsi que ce qui n'est pas standardisé !) car la synchronisation devait fonctionner avec un maximum de clients populaires.
-	
-	D'autre part, j'ai également dû lire et assimiler beaucoup du code de l'application Calendrier, car elle est développée à l'aide du Framework AngularJS qui était une technologie que je ne connaissais pas particulièrement.
 	
 	\section{ownCloud}
 	\textbf{ownCloud} est une application web libre écrite dans le langage de programmation PHP. Elle a été initialement créée en 2008 comme une alternative au service Dropbox par Frank Karlitschek. L'application est sous double licence : la \textbf{licence AGPLv3} et une licence propriétaire qui s'applique à l'édition pour entreprises. ownCloud est développé par l'entreprise allemande ownCloud GmbH.
@@ -275,12 +335,30 @@
 	
 	Cette scission n'a heureusement pas eu trop de conséquences car il s'est avéré que les deux projets continuaient à communiquer et à échanger du code.
 	
+	\section{Fonctionnement des calendriers}
+	
+	Le fonctionnement des calendriers dans ownCloud est le suivant. Le serveur s'appuie sur la librairie SabreDAV en l'adaptant pour son utilisation particulière dans un module propre. Ce module prend en charge les requêtes suivant les standards de synchronisation de calendriers et sert les données aux clients.
+	\\
+	
+	L'application Calendrier fonctionne exactement comme un client de synchronisation de calendriers standard. Elle se base sur la librairie JavaScript FullCalendar et utilise le \textit{framework} AngularJS.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.75\textwidth]{images/schema.png}
+		\caption{Fonctionnement des calendriers dans ownCloud}
+		\label{normal_case}
+	\end{figure}
+	
+	La première semaine de mon stage a été dédiée à l'étude du fonctionnement du cœur d'ownCloud et de son intégration avec la librairie SabreDAV. J'ai dû également rechercher beaucoup d'informations sur les standards (ainsi que ce qui n'est pas standardisé !) car la synchronisation devait fonctionner avec un maximum de clients populaires.
+	\\
+	
+	D'autre part, j'ai également dû lire et assimiler beaucoup du code de l'application Calendrier, car elle est développée à l'aide du Framework AngularJS qui était une technologie que je ne connaissais pas particulièrement.
 	\chapter{Développement}
 	\section{Organisation du travail}
 	\begin{figure}[H]
 		\centering
-		\centerline{\includegraphics[width=1.45\textwidth]{images/deroulement.png}}
 		\caption{Schéma du déroulement du stage}
+		\centerline{\includegraphics[width=1.45\textwidth]{images/deroulement.png}}
 		\label{normal_case}
 	\end{figure}
 	
@@ -304,7 +382,7 @@
 	
 	\section{Fonctionnalités}
 	\subsection{Publication d'un calendrier}
-	Pour pouvoir publier un calendrier il fallait donc plusieurs choses : d'abord introduire dans l'application \textit{core} la gestion de cette propriété, c'est à dire lorsqu'un client fait une requête pour interroger la ressource calendrier sur ses propriétés, il fournir celle-ci en répondant le cas échéant si le calendrier est publié.
+	Pour pouvoir publier un calendrier il fallait donc plusieurs choses : d'abord introduire dans l'application \textit{core} la gestion de cette propriété, c'est à dire lorsqu'un client fait une requête pour interroger la ressource calendrier sur ses propriétés, il fournit celle-ci en répondant le cas échéant si le calendrier est publié.
 	Ensuite, il nous fallait introduire un mécanisme pour pouvoir répondre à un appel d'\textsc{api} pour publier ou dé-publier le calendrier. Enfin, il fallait que le calendrier publié soit mis dans une collection de ressources à part, accessibles à tout le monde.
 	
 	Je n'ai pas compris ce dernier aspect tout de suite. Je pensais qu'il suffisait de garder la ressource existante et de forcer l'authentification à être désactivée dans ce cas précis.
@@ -369,8 +447,6 @@
 	
 	\subsection{Développements annexes}
 	
-	\textbf{\color{red}TODO : PASSER SUR TOUS LES BUGS CORRIGÉS PAR MOI VOIR SI Y A RIEN À MENTIONNER}
-	
 	Mon stage consistait avant tout à implémenter de nouvelles fonctionnalités dans l'application Calendrier existante, mais il fallait également que celle-ci soit prête à être utilisée dans Framagenda sans \textit{bugs} flagrants. Ainsi, j'ai corrigé quelques problèmes tiers dans le \textit{core} ou l'application Calendrier.
 	On peut citer par exemple les propriétés d'un abonnement à un calendrier qui n'étaient pas proprement sauvegardées lors d'une requête de mise à jour ou encore les événements d'un calendrier qui s'effaçaient si jamais l'éditeur était ouvert puis l'action d'édition annulée.
 	
@@ -394,7 +470,8 @@
 	
 	Enfin, il serait intéressant (mais également plus complexe) d'intégrer correctement les événements issus du calendrier avec le système de notifications d'ownCloud, par exemple lors qu'un utilisateur à accès à un nouveau partage, ou bien qu'il est invité à un événement.
 	
-	\mychapter{5}{Bilan du stage}
+	\newpage\null\thispagestyle{empty}\newpage
+	\chapter{Bilan du stage}
 	L'objectif de ce stage était de réaliser et mettre en place une application de gestion d'agendas. Cette application devait être intuitive et accessible à tout le monde, tout en ayant des fonctionnalités à peu près équivalentes avec Google Agenda.
 	\section{Bilan technique}
 	Pour ce qui est du niveau technique, je note avoir réussi à comprendre progressivement le fonctionnement des parties qui m'intéressaient de l'application ownCloud en un temps minimal malgré la complexité du logiciel. J'ai ensuite pu tirer avantage de mon expérience avec PHP par les projets scolaires et extrascolaires pour effectuer les modifications nécessaires sans trop de problèmes.
@@ -403,7 +480,11 @@
 	En revanche, j'ai eu plus de mal à comprendre les paradigmes utilisés dans la librairie SabreDAV et les standards de gestion de calendrier, d'une part à cause de la documentation plutôt moyenne ce qui m'a amené à faire beaucoup de tests par moi-même pour comprendre leur fonctionnement.
 	\\
 	
+	En dehors de ce point, les différentes documentations m'ont été très utiles. Celles produites par le projet ownCloud sont très souvent bien détaillées afin de faciliter l'apprentissage pour les nouveaux contributeurs au projet.
+	\\
+	
 	La partie de l'application en AngularJS m'a posé davantage de soucis. C'était en effet une technologie à laquelle je n'avais jamais touché et qui nécessite une certaine abstraction. Heureusement, il existe beaucoup de ressources sur AngularJS et sa courbe d'apprentissage permet de pouvoir toucher au code rapidement.
+	
 	\section{Bilan humain}
 	La particularité de mon stage était que je n'avais pas de contact physique avec d'autres développeurs d'ownCloud. Cela n'a pas été un problème car les communications sur les tickets Github et la messagerie instantanée à travers IRC m'ont permis de poser les questions nécessaires. Les échanges se sont faits intégralement en anglais.
 	\\
@@ -411,16 +492,34 @@
 	Les développeurs avec qui j'ai été en contact ont été sympathiques et compréhensifs, en prenant parfois le temps de m'expliquer mes erreurs, ce qui m'a agréablement surpris.
 	\\
 	
-	Concernant l'association Framasoft, j'ai pu apprécier leur bonne volonté lorsque j'ai lancé un appel à tester l'application en l'état.
+	Concernant l'association Framasoft, j'ai pu apprécier leur bonne volonté lorsque j'ai lancé un appel à tester l'application en l'état. J'ai pu assister aux réunions de travail via audioconférence entre les salariés et ainsi comprendre l'importance de leur organisation et leur communication.	
+	J'ai pu apprécier le cadre de travail durant ces dix semaines où j'ai découvert des personnes qui sont motivées par ce sur quoi elles travaillent, ce qui me plaît particulièrement. 
+	\\
+	
+	J'ai également pu prendre conscience de mes capacités et de mes difficultés sur certains points. En particulier, je me suis rendu compte de ma capacité à mieux comprendre un problème si je l'écrivais posément.
+	
+	J'ai donc apprécié mon stage car je pense en avoir acquis ce que j'en attendais, c'est-à-dire avant tout une confirmation de ma vision professionnelle à travers mon intérêt pour les technologies web modernes.
 	
 	\mychapter{8}{Webographie}
+	\begin{itemize}
+		\item \textbf{\href{https://www.calendarserver.org}{CalendarServer}} : Le site du serveur de calendrier et de contacts d'Apple. Contient certains standards propres à Apple. \href{https://www.calendarserver.org/}{https://www.calendarserver.org}
+		\item \textbf{\href{http://caldav.calconnect.org}{CalDAV}} : Les standards CalDAV en général. \href{http://caldav.calconnect.org}{http://caldav.calconnect.org}
+		\item Le \textbf{manuel pour développeurs} ownCloud \href{https://doc.owncloud.org/server/9.2/developer\_manual}{https://doc.owncloud.org/server/9.2/developer\_manual} et la \textbf{référence de l'API} \href{https://doc.owncloud.org/api}{https://doc.owncloud.org/api} à destination des applications.
+		\item Le \textbf{code source d'ownCloud} \href{https://github.com/owncloud/core}{https://github.com/owncloud/core} et celui de l'\textbf{application Calendrier} \href{https://github.com/owncloud/calendar}{https://github.com/owncloud/calendar}.
+		\item Le produit fini \textbf{Framagenda} \href{http://framagenda.org}{https://framagenda.org}
+		\item La documentation de la librairie utilisée \textbf{SabreDAV} \href{http://sabre.io/dav}{http://sabre.io/dav}
+		
+	\end{itemize}
+	
+	\newpage\null\thispagestyle{empty}\newpage
 	\mychapter{9}{Annexes}
+	\thispagestyle{empty}
 	\label{ch:Annexes}
 	\section{Les standards de gestion de calendrier}
 	\label{sec:standards}
-	Un serveur de calendrier doit suivre les standards \textbf{CalDAV}, qui est une extension du protocole \textbf{WebDAV} appliquée aux fichiers \textbf{iCalendar} (\textit{.ics}). WebDAV est un protocole de gestion de fichiers sur serveurs distants conçu comme une extension du standard HTTP. Il a commencé par être standardisé par l'IETF en Février 1999.
+	Un serveur de calendrier doit suivre les standards \textbf{CalDAV}, qui est une extension du protocole \textbf{WebDAV} appliquée aux fichiers \textbf{iCalendar} (\textit{.ics}). WebDAV est un protocole de gestion de fichiers sur serveurs distants conçu comme une extension du standard HTTP. Il a commencé par être standardisé par l'IETF en février 1999.
 	
-	\href{https://tools.ietf.org/html/rfc2445}{iCalendar}, pour sa part est un standard encore plus vieux (1998) qui décrit le format d'un fichier agenda. Ce format est beaucoup décrié aujourd'hui car étant assez lourd et complexe à manipuler. Heureusement, il existe de nombreuses librairies nous évitant de traiter directement ce format.
+	Le format de fichiers \href{https://tools.ietf.org/html/rfc2445}{iCalendar} est pour sa part est un standard encore plus vieux (1998) qui décrit le format d'un fichier agenda. Ce format est beaucoup décrié aujourd'hui car étant assez lourd et complexe à manipuler. Heureusement, il existe de nombreuses librairies nous évitant de traiter directement ce format.
 	
 	Dans notre cas, le serveur est - heureusement - géré avec le concours d'une librairie du nom de \textbf{SabreDAV} qui prend en charge CalDAV, CardDAV (pour les contacts) et WebDAV. Cette librairie fonctionne avec un système de plugins nous permettant de l'adapter pour notre utilisation dans ownCloud.
 	
@@ -442,6 +541,7 @@
 	Le standard XML définit les balises appartenant à un espace de noms. En l'occurence nous avons des balises représentant les propriétés de notre ressource, elle appartiennent ainsi à autant des espaces de noms différents qu'il existe de standards différents qui s'appliquent (IETF, DAV, CalendarServer c'est à dire Apple, et ownCloud pour nos propres propriétés).
 	
 	\section{Liste des services de Framasoft}
+	\thispagestyle{empty}
 	\label{sec:listeservices}
 	
 	\centerline{\begin{tabular}{|c|l|l|l|}%M{1cm}
@@ -499,6 +599,8 @@
 		& \cellcolor{lightgray}Framagenda & \cellcolor{lightgray}Google Agenda & \cellcolor{lightgray}Agenda partagé \\
 		\hline 
 		\end{tabular}}
-	
+	\vspace{1cm}
 	Les éléments grisés ne sont pas encore sortis cette année.
+	\thispagestyle{empty}
+	\newpage\null\thispagestyle{empty}\newpage
 \end{document}
