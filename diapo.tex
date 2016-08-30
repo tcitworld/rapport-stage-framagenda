@@ -9,9 +9,11 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 
-\author{Thomas Citharel}
-\title{Rapport de stage}
-\subtitle{avec un sous-titre}
+\setbeamertemplate{enumerate items}[square]
+
+\author{Thomas \textsc{Citharel}}
+\title{Soutenance de stage}
+\subtitle{Développement et mise en place d'une application de gestion d'agendas}
 \logo{}
 \institute{IUT d'Orléans}
 \date{31 août 2015}
@@ -28,18 +30,31 @@
 	\end{frame}
 	\begin{frame}
 		\frametitle{Présentation de la structure}
-		<logo frama>
+		\begin{figure}
+		\centering
+		\includegraphics[width=0.2\linewidth]{images/Framasoft-Logo}
+		\caption{Logo de Framasoft}
+		\label{fig:framasoft-logo}
+		\end{figure}
+
 		\section{Présentation de la structure}
 		\subsection{Historique}
 	\end{frame}
 	\begin{frame}
 		\frametitle{Présentation de la structure}
-		<carte degooglisons>
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.3\linewidth]{images/degooglisons-internet}
+			\caption{Carte de la campagne Dégooglisons}
+			\label{fig:degooglisons-carte}
+		\end{figure}
+		
 		\subsection{Liste des services}
 		
+		\centering
 		\begin{tabular}{|l|l|}
 			\hline
-			Service en ligne & Alternative par Framasoft \\
+			Service en ligne & Alternative \\
 			\hline
 			Google Docs & Framapad \\
 			\hline
@@ -51,13 +66,48 @@
 			\hline
 		\end{tabular}
 	\end{frame}
+	\section{Présentation du projet}
 	\begin{frame}
 		\frametitle{Présentation du projet}
-		\section{Présentation du projet}
+		\subsection{Alternative à Google Agenda}
+		\only<1>{
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.7\linewidth]{images/google-agenda-interface-actuelle}
+				\caption{Aperçu de Google Agenda}
+				\label{fig:google-agenda-interface-actuelle}
+			\end{figure}}
+		\subsection{L'application existante}
+		\only<2>{
+			Basée sur ownCloud et son application Calendar. 
+			\\
+			
+			Fonctionnalités existantes
+			\begin{enumerate}
+				\item Gestion de la liste d'agendas
+				\item Gestion d'événements
+				\item Partage d'événements
+				\item Synchronisation avec applications clientes
+			\end{enumerate}
+		}
+
+	\end{frame}
+	\begin{frame}
+		\frametitle{Objectifs du stage}
+		\section{Objectifs du stage}
+		\begin{enumerate}
+		\item Ajout de fonctionnalités
+		\begin{enumerate}
+			\item Publication d'un calendrier
+			\item Abonnement à des calendriers
+		\end{enumerate}
+		\item Mise en place du service
+	\end{enumerate}
 	\end{frame}
 	\begin{frame}
 		\frametitle{Réalisation du projet}
 		\section{Réalisation du projet}
+		\
 	\end{frame}
 	\begin{frame}
 		\frametitle{Bilan}
