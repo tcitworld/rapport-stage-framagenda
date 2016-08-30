@@ -236,7 +236,7 @@
 		\centering
 		\centerline{\includegraphics[width=1.5\textwidth]{images/google-agenda-interface-actuelle.png}}
 		\caption{Interface actuelle de Google Agenda}
-		\label{normal_case}
+		\label{google-agenda}
 	\end{figure}
 	
 	Par conséquent, des applications plus anciennes qui possédaient des fonctionnalités plus avancées ont été écartées car l'interface était non intuitive et la mauvaise qualité du code impliquait d'apporter une dette technique assez significative.
@@ -337,10 +337,10 @@
 	
 	\section{Fonctionnement des calendriers}
 	
-	Le fonctionnement des calendriers dans ownCloud est le suivant. Le serveur s'appuie sur la librairie SabreDAV en l'adaptant pour son utilisation particulière dans un module propre. Ce module prend en charge les requêtes suivant les standards de synchronisation de calendriers et sert les données aux clients.
+	Le fonctionnement des calendriers dans ownCloud est le suivant. Le serveur s'appuie sur la bibliothèque SabreDAV en l'adaptant pour son utilisation particulière dans un module propre. Ce module prend en charge les requêtes suivant les standards de synchronisation de calendriers et sert les données aux clients.
 	\\
 	
-	L'application Calendrier fonctionne exactement comme un client de synchronisation de calendriers standard. Elle se base sur la librairie JavaScript FullCalendar et utilise le \textit{framework} AngularJS.
+	L'application Calendrier fonctionne exactement comme un client de synchronisation de calendriers standard. Elle se base sur la bibliothèque JavaScript FullCalendar et utilise le \textit{framework} AngularJS.
 	
 	\begin{figure}[h]
 		\centering
@@ -349,7 +349,7 @@
 		\label{normal_case}
 	\end{figure}
 	
-	La première semaine de mon stage a été dédiée à l'étude du fonctionnement du cœur d'ownCloud et de son intégration avec la librairie SabreDAV. J'ai dû également rechercher beaucoup d'informations sur les standards (ainsi que sur ce qui n'est pas standardisé !) car la synchronisation devait fonctionner avec un maximum de clients populaires.
+	La première semaine de mon stage a été dédiée à l'étude du fonctionnement du cœur d'ownCloud et de son intégration avec la bibliothèque SabreDAV. J'ai dû également rechercher beaucoup d'informations sur les standards (ainsi que sur ce qui n'est pas standardisé !) car la synchronisation devait fonctionner avec un maximum de clients populaires.
 	\\
 	
 	D'autre part, j'ai également dû lire et assimiler beaucoup du code de l'application Calendrier, car elle est développée à l'aide du Framework AngularJS qui était une technologie que je ne connaissais pas particulièrement.
@@ -443,7 +443,7 @@
 	\subsection{Les tests unitaires}
 	Les tests unitaires n'étaient pas forcément requis dans le cas de mon développement, mais ils étaient obligatoires dans le cas où je voulais remonter le code \textit{upstream} (en amont) à la communauté. ownCloud, NextCloud et la plupart des applications développent en utilisant la technique d'intégration continue, c'est-à-dire que chaque nouveau morceau de code apporté sur Github lançait l'exécution de la batterie de tests au complet. 
 	
-	Chaque nouvelle méthode de mon code devait par conséquent s'accompagner d'un test qui était préalablement vérifié en local. Si une partie du code que j'avais apportée n'était pas testée, alors le \textit{code coverage}, la proportion de code couvert par les tests par rapport au code complet baissait et cela m'était automatiquement signalé. Les tests unitaires étaient réalisés à l'aide du \textit{framework} de test \textit{PHPUnit} pour le code PHP et de la librairie \textit{Karma} pour le JavaScript de l'application Calendrier.
+	Chaque nouvelle méthode de mon code devait par conséquent s'accompagner d'un test qui était préalablement vérifié en local. Si une partie du code que j'avais apportée n'était pas testée, alors le \textit{code coverage}, la proportion de code couvert par les tests par rapport au code complet baissait et cela m'était automatiquement signalé. Les tests unitaires étaient réalisés à l'aide du \textit{framework} de test \textit{PHPUnit} pour le code PHP et de la bibliothèque \textit{Karma} pour le JavaScript de l'application Calendrier.
 	
 	\subsection{Développements annexes}
 	
@@ -457,7 +457,7 @@
 	J'ai aussi ajouté les vérifications faites par cet outil au système d'intégration continue de sorte que si quelqu'un propose une \textit{pull request} qui ne satisfasse pas les règles, elle soit marquée comme erronée.
 
 	\section{Proposition d'améliorations}
-	J'ai pu remarquer certains manques par rapport à Google Agenda, comme une vue « planning » qui affiche les événement sous forme de liste. Cette vue pourrait être ajoutée en rendant l'application Calendrier compatible avec la version 3 de la librairie FullCalendar (Figure \ref{planning-fullcalendar}).
+	J'ai pu remarquer certains manques par rapport à Google Agenda, comme une vue « planning » qui affiche les événement sous forme de liste. Cette vue pourrait être ajoutée en rendant l'application Calendrier compatible avec la version 3 de la bibliothèque FullCalendar (Figure \ref{planning-fullcalendar}).
 	
 	\begin{figure}[ht]
 		\centering
@@ -477,7 +477,7 @@
 	Pour ce qui est du niveau technique, je note avoir réussi à comprendre progressivement le fonctionnement des parties qui m'intéressaient de l'application ownCloud et cela en un temps minimal malgré la complexité du logiciel. J'ai ensuite pu tirer avantage de mon expérience avec PHP par les projets scolaires et extrascolaires pour effectuer les modifications nécessaires sans trop de problèmes.
 	\\
 	
-	En revanche, j'ai eu plus de mal à comprendre les paradigmes utilisés dans la librairie SabreDAV et les standards de gestion de calendrier, notamment à cause de la documentation plutôt moyenne. Ceci m'a amené à faire beaucoup de tests par moi-même pour comprendre leur fonctionnement.
+	En revanche, j'ai eu plus de mal à comprendre les paradigmes utilisés dans la bibliothèque SabreDAV et les standards de gestion de calendrier, notamment à cause de la documentation plutôt moyenne. Ceci m'a amené à faire beaucoup de tests par moi-même pour comprendre leur fonctionnement.
 	\\
 	
 	En dehors de ce point, les différentes documentations m'ont été très utiles. Celles produites par le projet ownCloud sont très souvent bien détaillées afin de faciliter l'apprentissage pour les nouveaux contributeurs au projet.
@@ -507,7 +507,7 @@
 		\item Le \textbf{manuel pour développeurs} ownCloud \href{https://doc.owncloud.org/server/9.2/developer\_manual}{https://doc.owncloud.org/server/9.2/developer\_manual} et la \textbf{référence de l'API} \href{https://doc.owncloud.org/api}{https://doc.owncloud.org/api} à destination des applications.
 		\item Le \textbf{code source d'ownCloud} \href{https://github.com/owncloud/core}{https://github.com/owncloud/core} et celui de l'\textbf{application Calendrier} \href{https://github.com/owncloud/calendar}{https://github.com/owncloud/calendar}.
 		\item Le produit fini \textbf{Framagenda} \href{http://framagenda.org}{https://framagenda.org}
-		\item La documentation de la librairie utilisée \textbf{SabreDAV} \href{http://sabre.io/dav}{http://sabre.io/dav}
+		\item La documentation de la bibliothèque utilisée \textbf{SabreDAV} \href{http://sabre.io/dav}{http://sabre.io/dav}
 		
 	\end{itemize}
 	
@@ -519,9 +519,9 @@
 	\label{sec:standards}
 	Un serveur de calendrier doit suivre les standards \textbf{CalDAV}, qui est une extension du protocole \textbf{WebDAV} appliquée aux fichiers \textbf{iCalendar} (\textit{.ics}). WebDAV est un protocole de gestion de fichiers sur serveurs distants conçu comme une extension du standard HTTP. Il a commencé par être standardisé par l'IETF en février 1999.
 	
-	Le format de fichiers \href{https://tools.ietf.org/html/rfc2445}{iCalendar} est pour sa part un standard encore plus vieux (1998) qui décrit le format d'un fichier agenda. Ce format est beaucoup décrié aujourd'hui car étant assez lourd et complexe à manipuler. Heureusement, il existe de nombreuses librairies nous évitant de traiter directement ce format.
+	Le format de fichiers \href{https://tools.ietf.org/html/rfc2445}{iCalendar} est pour sa part un standard encore plus vieux (1998) qui décrit le format d'un fichier agenda. Ce format est beaucoup décrié aujourd'hui car étant assez lourd et complexe à manipuler. Heureusement, il existe de nombreuses bibliothèques nous évitant de traiter directement ce format.
 	
-	Dans notre cas, le serveur est - heureusement - géré avec le concours d'une librairie du nom de \textbf{SabreDAV} qui prend en charge CalDAV, CardDAV (pour les contacts) et WebDAV. Cette librairie fonctionne avec un système de plugins nous permettant de l'adapter pour notre utilisation dans ownCloud.
+	Dans notre cas, le serveur est - heureusement - géré avec le concours d'une bibliothèque du nom de \textbf{SabreDAV} qui prend en charge CalDAV, CardDAV (pour les contacts) et WebDAV. Cette bibliothèque fonctionne avec un système de plugins nous permettant de l'adapter pour notre utilisation dans ownCloud.
 	
 	Il est important de remarquer que si les protocoles et standards internet pour la gestion de calendrier sont définis et correctement documentés, leurs implémentations dans les applications clientes ou serveur sont plus qu'hasardeuses et la liste des fonctionnalités supportées peut être assez différente d'une application à l'autre.
 	
