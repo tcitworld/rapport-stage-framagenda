@@ -104,22 +104,22 @@
 		\frametitle{Présentation du projet}
 		\subsection{Alternative à Google Agenda}
 		\begin{figure}
-				\centering
-				\includegraphics[width=1\linewidth]{images/google-agenda-interface-actuelle}
-				\caption{Aperçu de Google Agenda}
-				\label{fig:google-agenda-interface-actuelle}
-			\end{figure}
-		\end{frame}
-		\begin{frame}
-			\frametitle{Présentation du projet}
-			Choix de l'application sur laquelle se baser.
-			\begin{itemize}
-				\visible<1->{\item Nécessité d'avoir un bon nombre de fonctionnalités déjà existantes}
-				\visible<2->{\item Interface utilisateur intuitive et moderne}
-				\visible<3->{\item Logiciel pas trop vieux afin d'éviter une dette technique}
-			\end{itemize}
-		\end{frame}
-		\begin{frame}
+			\centering
+			\includegraphics[width=1\linewidth]{images/google-agenda-interface-actuelle}
+			\caption{Aperçu de Google Agenda}
+			\label{fig:google-agenda-interface-actuelle}
+		\end{figure}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Présentation du projet}
+		Choix de l'application sur laquelle se baser.
+		\begin{itemize}
+			\visible<1->{\item Nécessité d'avoir un bon nombre de fonctionnalités déjà existantes}
+			\visible<2->{\item Interface utilisateur intuitive et moderne}
+			\visible<3->{\item Logiciel pas trop vieux afin d'éviter une dette technique}
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
 		\frametitle{Présentation du projet}
 		\visible<1->{Solution basée sur \textbf{ownCloud} et son application Calendar.}
 		\begin{itemize}
@@ -161,6 +161,44 @@
 			\visible<2->{\item Mise en place sur une machine virtuelle avec un nom de domaine pour effectuer des tests utilisateur}
 			\visible<3->{\item Tests pratiques de la synchronisation avec des applications clientes}
 		\end{itemize}
+	\end{frame}
+	\section{Développement}
+	\begin{frame}
+		\frametitle{Implémentation dans ownCloud}
+		\only<1>{\begin{figure}
+			\centering
+			\includegraphics[width=0.5\linewidth]{images/schema.png}
+			\caption{Aperçu de la publication d'un calendrier}
+			\label{fig:schema}
+		\end{figure}}
+		\only<2>{\begin{itemize}
+			\item Étude des standards DAV, CalDAV, CalendarServer (Apple)
+			\item Envoi des requêtes avec des paramètres en plus
+			\item Prise en charge des requêtes par des plugins étendant SabreDAV
+		\end{itemize}}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Développement}
+		\begin{minipage}{0.45\textwidth}
+			\begin{flushleft}
+				\begin{figure}
+					\centering
+					\includegraphics[width=1\linewidth]{images/emailpublic.png}
+					\caption{Aperçu de la publication d'un calendrier}
+					\label{fig:publication-img}
+				\end{figure}
+			\end{flushleft}
+		\end{minipage}
+		\begin{minipage}{0.45\textwidth}
+			\begin{flushright}
+				\begin{figure}
+					\centering
+					\includegraphics[width=1\linewidth]{images/creation_abonnement.png}
+					\caption{Abonnement à un calendrier}
+					\label{fig:ajout-abdonnement}
+				\end{figure}
+			\end{flushright}
+		\end{minipage}
 	\end{frame}
 	\section{Bilan}
 	\subsection{Bilan technique}
